@@ -1,0 +1,258 @@
+---
+title: ""
+output: html_document
+---
+
+# Introduction
+
+# Initial Questions
+
+-   What are the significant features of classifying fake job posting
+-   Which classification model is the best to classify fake job posting
+
+# Objectives
+
+-   To identify key features of fraudulent job postings
+-   To build a model to classify real or fake job postings
+
+# Data Cleaning and Pre-processing
+
+## Import libraries
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(naniar)
+library(skimr)
+library(stringr)
+library(visdat)
+library(DataExplorer)
+library(ggplot2)
+library(RColorBrewer)
+```
+
+## Load data
+
+```{r input}
+df <- read.csv("https://raw.githubusercontent.com/abbylmm/fake_job_posting/main/data/fake_job_postings.csv")
+```
+
+## Summary data
+
+```{r}
+df_fake_job <- df
+sample_n(df_fake_job, 3)
+summary(df_fake_job)
+```
+
+## Check all the missing values - 'empty'
+
+```{r}
+skim(df_fake_job)
+```
+
+## Split location to country, state, city and fill empty with NA
+
+```{r}
+df_fake_job[c("country", "state", "city")] <- str_split_fixed(df_fake_job$location, ", ", 3)
+df_fake_job[c("country", "state", "city")][df_fake_job[c("country", "state", "city")] == ""] <- NA
+```
+
+## Split salary_range to min_salary, max_salary and fill empty with NA
+
+```{r}
+df_fake_job[c("min_salary", "max_salary")] <- str_split_fixed(df_fake_job$salary_range, "-", 2)
+df_fake_job[c("min_salary", "max_salary")][df_fake_job[c("min_salary", "max_salary")] == ""] <- NA
+```
+
+## Drop location and salary_range
+
+```{r}
+df_fake_job <- select(df_fake_job, -c(location, salary_range))
+```
+
+## Convert to lowercase string
+
+```{r}
+cols <- c("company_profile", "description", "requirements", "benefits")
+for (x in df_fake_job[cols]) {
+  df_fake_job[cols] <- tolower(x)
+}
+```
+
+## View the structure of data
+
+```{r}
+glimpse(df_fake_job)
+class(df_fake_job)
+```
+
+## View column names
+
+```{r}
+names(df_fake_job)
+```
+
+## Check if any duplication id
+
+```{r}
+table(duplicated(df_fake_job$job_id))
+### there is no duplication id
+```
+
+## Check for total missing values for each feature
+
+```{r}
+colSums(is.na(df_fake_job))
+### there are two missing values in 'benefits' column
+```
+
+## Populate missing rates for each feature
+
+```{r}
+colSums(is.na(df_fake_job)/length(df_fake_job)*100)
+```
+
+## List rows with missing values
+
+```{r}
+missingdf <- df_fake_job[!complete.cases(df_fake_job), ]
+```
+
+## Visualize missing values
+
+```{r}
+gg_miss_var(df_fake_job, show_pct = TRUE) + labs(y = "% Missing")
+```
+
+## Merge columns and create a new 'full_text' column
+
+```{r}
+viz_df <- select(df_fake_job, -c(max_salary, min_salary, state, city))
+viz_df[viz_df == ""] <- NA
+viz_df$full_text <- 
+  paste(viz_df$title, 
+        viz_df$country, 
+        viz_df$department, 
+        viz_df$company_profile, 
+        viz_df$description, 
+        viz_df$requirements, 
+        viz_df$benefits, 
+        viz_df$employment_type, 
+        viz_df$required_experience, 
+        viz_df$required_education, 
+        viz_df$industry, 
+        viz_df$function.)
+# sample(viz_df, 3)
+# write.csv(viz_df, "C:/Users/munmu/Documents/GitHub/fake_job_posting\\viz_df.csv", row.names = FALSE)
+```
+
+## Visualize missing profile for each feature
+
+```{r}
+plot_missing(viz_df)
+```
+
+## Drop columns
+
+```{r}
+model_df <- select(viz_df, 
+                   -c(title, 
+                      country, 
+                      department, 
+                      company_profile, 
+                      description, 
+                      requirements, 
+                      benefits, 
+                      employment_type, 
+                      required_experience, 
+                      required_education, 
+                      industry, 
+                      function.))
+sample_n(model_df, 3)
+# write.csv(model_df, "C:/Users/munmu/Documents/GitHub/fake_job_posting\\model_df.csv", row.names = FALSE)
+```
+
+## Check NA or missing values
+
+```{r}
+sum(is.na(model_df))
+sum(model_df == "")
+```
+
+## Visualize missing values
+
+```{r}
+vis_miss(model_df)
+vis_dat(model_df)
+```
+
+# Exploratory Data Analysis (EDA)
+
+## Visualize Fraud and Real
+
+```{r}
+viz_df$fraudulent[viz_df$fraudulent == 1] <- "Yes"
+viz_df$fraudulent[viz_df$fraudulent == 0] <- "No"
+count <- table(viz_df$fraudulent)
+barplot(count, 
+        main="Real and Fraudulent", 
+        xlab="fraudulent", 
+        ylab="count", 
+        col="#69b3a2")
+```
+
+## Visualize Country-wise Job Posting
+
+```{r}
+temp <- na.omit(subset(viz_df, select = c(country, job_id))) %>% 
+  group_by(country) %>% 
+  summarize(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  slice(1:10)
+
+barplot(height=temp$n, 
+        main="Top 10 Country-wise Job Posting", 
+        ylab="count", 
+        col=brewer.pal(10, "Set2"), 
+        names.arg=c("United States",
+                    "United Kingdom",
+                    "Greece",
+                    "Canada",
+                    "Germany",
+                    "New Zealand",
+                    "India",
+                    "Australia",
+                    "Philippines",
+                    "Netherlands"), 
+        cex.names=0.8, 
+        las=2
+)
+```
+
+## Visualize the required experiences in the jobs
+
+```{r}
+temp <- na.omit(subset(viz_df, select = c(required_experience, job_id))) %>% 
+  group_by(required_experience) %>% 
+  summarize(n = n()) %>% 
+  arrange(desc(n))
+
+barplot(height=temp$n, 
+        names=temp$required_experience, 
+        main="No. of jobs with different experience levels", 
+        ylab="count", 
+        col=brewer.pal(7, "Set2"), 
+        cex.names=0.6, 
+        las=2
+)
+```
+
+# Modeling
+
+## Classification
+
+## Regression
+
+# Data Prediction
+
+# Evaluation
