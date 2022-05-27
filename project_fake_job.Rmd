@@ -224,7 +224,7 @@ barplot(height=temp$n,
                     "Australia",
                     "Philippines",
                     "Netherlands"), 
-        cex.names=0.8, 
+        cex.names=0.7, 
         las=2
 )
 ```
