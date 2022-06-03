@@ -1,7 +1,17 @@
 ---
-title: ""
-output: rmarkdown::github_document
+title: "WQD7004 Group Assignment"
+output: github_document
 ---
+
+# Fake Job Posting Analysis
+
+### Group 4:
+
+-   JingYu Shen (S2113037)
+-   JiPing Zhang (S2042984)
+-   Lee Mun Mun (S2112842)
+-   Nayli Hatim (S2149344)
+-   Jenifer Mayang Jues (S2016572)
 
 # Introduction
 
@@ -27,7 +37,11 @@ library(stringr)
 library(visdat)
 library(DataExplorer)
 library(ggplot2)
+library(plotly)
 library(RColorBrewer)
+library(keras)
+library(tidyr)
+library(reshape2)
 ```
 
 ## Load data
@@ -130,18 +144,18 @@ gg_miss_var(df_fake_job, show_pct = TRUE) + labs(y = "% Missing")
 viz_df <- select(df_fake_job, -c(max_salary, min_salary, state, city))
 viz_df[viz_df == ""] <- NA
 viz_df$full_text <- 
-  paste(viz_df$title, 
-        viz_df$country, 
-        viz_df$department, 
-        viz_df$company_profile, 
-        viz_df$description, 
-        viz_df$requirements, 
-        viz_df$benefits, 
-        viz_df$employment_type, 
-        viz_df$required_experience, 
-        viz_df$required_education, 
-        viz_df$industry, 
-        viz_df$function.)
+  paste(na.omit(viz_df$title), 
+        na.omit(viz_df$country), 
+        na.omit(viz_df$department), 
+        na.omit(viz_df$company_profile), 
+        na.omit(viz_df$description), 
+        na.omit(viz_df$requirements), 
+        na.omit(viz_df$benefits), 
+        na.omit(viz_df$employment_type), 
+        na.omit(viz_df$required_experience), 
+        na.omit(viz_df$required_education), 
+        na.omit(viz_df$industry), 
+        na.omit(viz_df$function.))
 # sample(viz_df, 3)
 # write.csv(viz_df, "C:/Users/munmu/Documents/GitHub/fake_job_posting\\viz_df.csv", row.names = FALSE)
 ```
@@ -188,7 +202,7 @@ vis_dat(model_df)
 
 # Exploratory Data Analysis (EDA)
 
-## Visualize Fraud and Real
+## Visualize fraud and real
 
 ```{r}
 viz_df$fraudulent[viz_df$fraudulent == 1] <- "Yes"
@@ -198,10 +212,11 @@ barplot(count,
         main="Real and Fraudulent", 
         xlab="fraudulent", 
         ylab="count", 
-        col="#69b3a2")
+        col="#69b3a2"
+)
 ```
 
-## Visualize Country-wise Job Posting
+## Visualize country-wise job postings
 
 ```{r}
 temp <- na.omit(subset(viz_df, select = c(country, job_id))) %>% 
@@ -211,9 +226,9 @@ temp <- na.omit(subset(viz_df, select = c(country, job_id))) %>%
   slice(1:10)
 
 barplot(height=temp$n, 
-        main="Top 10 Country-wise Job Posting", 
+        main="Top 10 Country-wise Job Postings", 
         ylab="count", 
-        col=brewer.pal(10, "Set2"), 
+        col=brewer.pal(10, "Set3"), 
         names.arg=c("United States",
                     "United Kingdom",
                     "Greece",
@@ -224,7 +239,7 @@ barplot(height=temp$n,
                     "Australia",
                     "Philippines",
                     "Netherlands"), 
-        cex.names=0.7, 
+        cex.names=0.6, 
         las=2
 )
 ```
@@ -239,12 +254,108 @@ temp <- na.omit(subset(viz_df, select = c(required_experience, job_id))) %>%
 
 barplot(height=temp$n, 
         names=temp$required_experience, 
-        main="No. of jobs with different experience levels", 
+        main="No. of Job Postings with different required experiences", 
         ylab="count", 
         col=brewer.pal(7, "Set2"), 
         cex.names=0.6, 
         las=2
 )
+```
+
+## Visualize job postings with company logo
+
+```{r}
+viz_df$has_company_logo[viz_df$has_company_logo == 1] <- "Yes"
+viz_df$has_company_logo[viz_df$has_company_logo == 0] <- "No"
+
+df1 <- na.omit(subset(viz_df, select = c(employment_type, has_company_logo))) %>% 
+  group_by(employment_type, has_company_logo) %>% 
+  summarize(yes = n(), .groups = 'drop') %>% 
+  filter(has_company_logo=="Yes")
+df1 <- subset(df1, select = c(employment_type, yes))
+df2 <- na.omit(subset(viz_df, select = c(employment_type, has_company_logo))) %>% 
+  group_by(employment_type, has_company_logo) %>% 
+  summarize(no = n(), .groups = 'drop') %>% 
+  filter(has_company_logo=="No")
+df2 <- subset(df2, select = c(no))
+df_new <- cbind(df1, df2)
+
+fig <- df_new %>% plot_ly()
+fig <- fig %>% add_trace(x = ~employment_type, y = ~no, type = 'bar', 
+             text = ~no, textposition = 'auto', name = 'No', 
+             marker = list(color = 'rgb(158,202,225)', 
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% add_trace(x = ~employment_type, y = ~yes, type = 'bar', 
+            text = ~yes, textposition = 'auto', name = 'Yes', 
+            marker = list(color = 'rgb(58,200,225)', 
+                          line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% layout(title = "Job Postings with Company Logo based on Employment Type",
+         barmode = 'group',
+         xaxis = list(title = "employment_type"),
+         yaxis = list(title = "count"))
+fig
+```
+
+## Visualize job postings with questions
+
+```{r}
+viz_df$has_questions[viz_df$has_questions == 1] <- "Yes"
+viz_df$has_questions[viz_df$has_questions == 0] <- "No"
+
+df1 <- na.omit(subset(viz_df, select = c(employment_type, has_questions))) %>% 
+  group_by(employment_type, has_questions) %>% 
+  summarize(yes = n(), .groups = 'drop') %>% 
+  filter(has_questions=="Yes")
+df1 <- subset(df1, select = c(employment_type, yes))
+df2 <- na.omit(subset(viz_df, select = c(employment_type, has_questions))) %>% 
+  group_by(employment_type, has_questions) %>% 
+  summarize(no = n(), .groups = 'drop') %>% 
+  filter(has_questions=="No")
+df2 <- subset(df2, select = c(no))
+df_new <- cbind(df1, df2)
+
+fig <- df_new %>% plot_ly()
+fig <- fig %>% add_trace(x = ~employment_type, y = ~no, type = 'bar', 
+             text = ~no, textposition = 'auto', name = 'No', 
+             marker = list(color = 'rgb(158,202,225)', 
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% add_trace(x = ~employment_type, y = ~yes, type = 'bar', 
+            text = ~yes, textposition = 'auto', name = 'Yes', 
+            marker = list(color = 'rgb(58,200,225)', 
+                          line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% layout(title = "Job Postings with Questions based on Employment Type",
+         barmode = 'group',
+         xaxis = list(title = "employment_type"),
+         yaxis = list(title = "count"))
+fig
+```
+
+## Visualize the job function with fraudulent job postings
+
+```{r}
+temp <- na.omit(subset(viz_df, select = c(function., fraudulent))) %>% 
+  group_by(function., fraudulent) %>% 
+  summarize(n = n(), .groups = 'drop') %>% 
+  group_by(function.) %>% 
+  summarize(pct_fraud = round(sum(n[fraudulent=="Yes"]/sum(n)), digits=2), 
+            pct_good = 1-pct_fraud, .groups = 'drop') %>% 
+  arrange(desc(pct_fraud)) %>% 
+  slice(1:10)
+
+melted_temp <- melt(temp, id = "function.")
+
+ggplot(melted_temp, aes(x = function., y = value, fill = variable)) + 
+  geom_bar(position = "fill", 
+           stat = "identity", 
+           color = "black", 
+           width = 0.8) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.6)) + 
+  scale_y_continuous(labels = scales::percent) + 
+  geom_text(aes(label = paste0(value*100,"%")), 
+            position = position_stack(vjust = 0.6), size = 2) + 
+  ggtitle("Job Function with Fraudulent Job Postings (in %)") + 
+  xlab("function") + 
+  ylab("percentage")
 ```
 
 # Modeling
