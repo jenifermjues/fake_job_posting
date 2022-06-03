@@ -1,3 +1,15 @@
+WQD7004 Group Assignment
+================
+
+# Fake Job Posting Analysis
+
+### Group 4:
+
+-   JingYu Shen (S2113037)
+-   JiPing Zhang (S2042984)
+-   Lee Mun Mun (S2112842)
+-   Nayli Hatim (S2149344)
+-   Jenifer Mayang Jues (S2016572)
 
 # Introduction
 
@@ -28,42 +40,42 @@ df_fake_job <- df
 sample_n(df_fake_job, 3)
 ```
 
-    ##   job_id                                title         location  department
-    ## 1  13749    Embedded and Application Engineer NZ, N, Auckland  Engineering
-    ## 2  15149 Community Manager & Customer Support US, NY, New York            
-    ## 3  12808         Business Development Manager        AU, VIC,             
-    ##   salary_range
-    ## 1             
-    ## 2  55000-70000
-    ## 3             
-    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  company_profile
-    ## 1 Want to be part of a NZ success story thatâ\200\231s going places?Want to have a hand in developing products that youâ\200\231ll be proud of?We are a driven and ambitious technology business with a Vision to deliver revolutionary transactional and self service products that make people wonder how they ever lived without them.Designed in New Zealand and exported across the world, our products have an enviable history of delivering smart and robust technology solutions to the oil and gas retail sector. We have developed many first-in-world products and we are embarking on our next strategic horizon - so we have exciting and challenging times ahead!Types of roles we recruit for;Embedded and Application EngineersMechanical, Hardware and Production EngineersSoftware Developers (particularly Java Devâ\200\231s with payments experience)Product ArchitectsQA &amp; Compliance (including Test Analysts / Test Engineers)Project Managers (software and hardware)Solutions Consultants (Business Analysts)Plus much much moreWe believe in the importance of living and breathing our Company Values; weâ\200\231re Passionate, we do What We Say, weâ\200\231re Straight Up, weâ\200\231re Creative, weâ\200\231re Team players, weâ\200\231re all about Quality, we make it Win-Win and People Matter to us.
-    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             BoweryÂ is an easier way to set up your development environment.Â 
-    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      We are experts in enterprise systems management for the desktop, mobility, datacentre + cloud. We are a young and dynamic workplace, with a strong culture of technical brilliance, sharing, learning, and well, having fun at the same time. Our team is based in Melbourne, Australia. If you have awesome skills in virtualisation and management, and you want to part of the Olikka team, apply now.
-    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     description
-    ## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 We are a driven and ambitious technology business with a Vision to deliver revolutionary transactional and self service products that make people wonder how they ever lived without them.Designed in New Zealand and exported across the world, our products have an enviable history of delivering smart and robust technology solutions. We have developed many first-in-world products and have a long history of innovative site automation solutions. We are embarking on our next strategic horizon - implementing cloud and mobile strategies to retain our leadership and recognised innovation, so we have exciting and challenging times ahead.In thisÂ key role, the Embedded and Application Engineer will play a vital role in building and maintaining embedded software solutions. You will be responsible for embedded product maintenance, completing the development of new functionality and modifications to existing functionality on embedded devices, updating regression/unit test suites, software documentation and the creation of developer test plans. This role will give you exposure to a new platform and enable you provide expert input into development.
-    ## 2 Bowery is an easier way to set up your development environment. We're venture-backed and looking for a self-driven and excited customer-experience lead to engage our community and make users happy.And why would you want to work here?Work on something that matters. You're not the type of person who wants to work on another image sharing app or social network for dogs. You want to create tools that developers around the world love and share. Build a dev tool that you love using and everyone else will love it too.Work with a smart team who cares.Â The average age of our team is 21.75. We've worked at companies like Medium, Poptip, and Jawbone, and we enjoy working with people who care about the work they do.Be judged on the work you do, not where or when you do it.Â There's no bureaucracy or approved holiday time. We're all measured by metrics and the work we do, not what time you get into the office. That's the advantage of hiring the smartest engineers we know.As part of this position, you will:Formalize and manage all aspects of customer experienceAnswer customer support questions and comments over email and live chatEstablish process to measure customer service performance and continuously drive strategies to improve itOwn social media presence and actively engage community to build loyalty on Twitter, Github, etc.Manage company blog, write original content, and find others in the developer community who can write guest posts and contribute contentConceptualize new marketing strategies and promotional plans (both offline and online)Help our engineering and design teams prioritize new features and bug fixes based on customer feedback
-    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  An Olikka New Business/Account Manager is considered an integral part to the sales team function, and will form a crucial role in taking Olikka to the next level and the success of the business. The New Business/Account Manager is a motivated individual with enthusiasm and confidence to lead sales and not only achieve but exceed targets and KPIs set by the business.The Olikka New Business/Account Manager will have demonstrated experience within the IT industry, selling solutions and products and have a willingness to learn and adapt to new technologies as they emerge. An understanding of both Microsoft and Citrix technologies will be a valuable asset.In addition, the Olikka New Business/Account Manager will have experience in developing sales strategies and building new business relationships. They will also be a strong communicator and are adept at communicating business value of our solutions in a way that is extremely easy for our customers to understand.
-    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 requirements
-    ## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        As an expert in Embedded DevelopmentÂ you will have the following experience:Strong working knowledge of C/C++ and Assembler languagesExcellent understanding of electronics, with the ability to interpret electronic schematicsAwareness of the fundamentals of digital designExperience in RTOS or embedded OSesEmbedded Linux x86/ARMIt goes without saying that you are a confident team player with the ability to interact with internal and external clients alike. Your open personality, outstanding decision making skills and communicative approach will see you succeed in this role.
-    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    You're familiar with codingâ\200”maybe you've taken a class in school, or watched some videos online. The more familiarity with web development, the better.Strong writing and interpersonal skillsAbility to troubleshoot customer problems, sometimes under pressureSelf-starter who is comfortable working independently in unstructured environmentsExperience with helping customersNYC-based a plus, but not necessaryPrevious experience in customer support a plus
-    ## 3 The Olikka New Business/Account Manager will be responsible but not limited to the following:Continually look to identify and establish new business relationships with key influencersUse existing networks and industry contacts to generate new businessAct promptly on leads provided by Partners (Citrix and Microsoft)Plan, design and conduct a defined sales strategy to ensure sales targets set by management are metSustain a good understanding of current and upcoming technologies, services and productsRecognise the sales process to proactively and accurately engage with customers about next purchase decisionsMaintain up to date information in the CRM database for management of the sales cycle, pipeline and sales targetsPrepare and provide sales proposals in a timely mannerCoordinate with Consultants and Technical Specialists where necessary to meet customer and business needs and expectationsParticipate in sales, marketing and networking events designed to assist Olikka in gaining exposure and a greater market shareSupport and implement marketing initiatives as required
-    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                benefits
-    ## 1 We are in an exciting growth phase, if you would like the opportunity to work for an organisation where your skills and performance will be recognised, an organisation that believes in investing in your learning and development, then we would like to hear from you!City fringe location - based in PonsonbyEmployee Wellbeing ProgrammeActive Social ClubPerformance based pay, training and development opportunities, challenging work, flexible work hours, paid birthday leave, discounted medical insurance, discounted Gym membership, Cafe discounts and access to EAP services.We believe in the importance of living our Company Values; weâ\200\231re Passionate, we do What We Say, weâ\200\231re Straight Up, weâ\200\231re Creative, weâ\200\231re Team players, weâ\200\231re all about Quality, we make it Win-Win and People Matter to us.If this sounds like you and you want to work with a passionate group of people who work hard to get projects across the line; do what needs to be done to deliver successfully and have fun while doing it, then apply today!#URL_5986f170772b5bd01bbbe5dcef6d24f90be00a45753fa426e2c4ec5453248cd6#
-    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Happy.Â Work with a fast-growing team to build a product with thousands of users.Healthy.Â Full health and dental coverageâ\200”we want you to be healthy.Productive.Â Your workstation of choiceâ\200”use the tools that make you most efficient at your job. And we work out ofÂ Work-bench, an awesome co-working space in the heart of New York City that has the coolest espresso machine ever.Wherever.Â Relocation supportâ\200”if you want to move NYC, we'll help you out.
-    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    ##   job_id                                 title            location
+    ## 1   6335            Marketing Intern for Games GR, B, Thessaloniki
+    ## 2  17291 Embedded Software / Firmware Engineer   US, MA, Cambridge
+    ## 3  15906                      Branch Associate     US, MA, Medford
+    ##       department salary_range
+    ## 1      Marketing             
+    ## 2                            
+    ## 3 Medford Branch             
+    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         company_profile
+    ## 1 At Total EclipseÂ we create fun, original, and addictive games that are easy to learn yet hard to master. We have a strong history of game releases, with 9 shipped games in 10 years, across different genres and #URL_d09fcd5154ef7c470dcdf6a9151af4f73dbcc5bda134912e2dedf1da67449c12# purpose is to â\200\230Popularise Playâ\200\231; we want to get more people to enjoy games as we believe that there is a potential gamer in each one of us.This is a truly exciting time for Total Eclipse! We are growing, and we intend to become one of the top brands in multiplatform casual gaming. Are you ready to be part of a small and agile team with a great vision? Then keep reading!Are we a good match?Every new addition to the team helps define Total Eclipseâ\200\231s future, so we want to make sure we would be a good match for each other. Â We have many of the good qualities of a startup, such as low bureaucracy and a flat hierarchy, a flexible, open working space and a motivated, talented team which aims to make millions of peopleâ\200\231s lives more fun.Â We also have heaps of experience, having survived and thrived for years in a fiercely competitive environment. We embrace creativity, innovation, high quality, cooperation, teamwork and openness. We are not secretive; we enjoy exchanging knowledge not only among the team, but also with fellow game developers.Â Our industry changes rapidly and we must always stay on the cutting edge. We thirst for knowledge and have a passion for honing our skills and improving ourselves. We are team players, and are looking for more nice people who enjoy working as part of a tight team. We also value constructive feedback; it is a powerful tool to help make us and our games, better. Â If you think in a similar way, you will feel right at home working with us. Take a look at our current openings and get in touch!Â Find out more about our company ethos!
+    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Wallflowr is a Cambridge, MA based company working on developing technologies for a safer home and work environment. Wallflowr has a patent-pending system to detect the proximity of people and advanced control of appliances and devices.Â 
+    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Outstanding Member Service Starts With Outstanding PeopleIf you are committed to the concept of â\200œabove and beyondâ\200\235 and enjoy interacting with people either in person or on the telephone, then we want to talk to you.Our people are our most valuable asset. We recognize their value â\200“ the hard work and dedication they give â\200“ and reward it through a highly competitive salary structure and benefits program which includes:Medical, dental and vision insurance401kÂ Â Retirement Savings PlanÂ with a match up to 6% by the Credit UnionFlexibleÂ SpendingÂ Â AccountsLife insurance paid by the Credit UnionGenerous paid time offGym membership reimbursement program.
+    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           description
+    ## 1 You love stirring up a passion in people about new products. You excel at tailoring your marketing approach to different products and target groups. You flourish in online communities: not only are you adept at using all kinds of social media, you are also aware of netiquette and nuances of individual spaces and communities. You think positively, discover creative solutions, and you thrive when learning and improving yourself.We are looking to hire a talented Marketing Intern who is self-motivated and a strong team player. You will work closely with the rest of the team and help shape the digital marketing strategy for the Total Eclipse brand and games.We offer you a chance to join an agile team of experienced game developers, where terms like â\200œno bureaucracyâ\200\235 and â\200œflat hierarchyâ\200\235 actually mean something. We are big believers of respect, teamwork, assistance, and exchange of knowledge. If you share those beliefs, you will feel right at home working with us!Key responsibilitiesBe the liaison for any communications with our fans, the press, and PR agencies.Author any marketing copy required, from press releases to newsletters.Schedule topics for the Total Eclipse blog and manage the website news and updates.Increase the Total Eclipse brand and games awareness through the use of Social Media/PR/ads.Perform research for new ways to further increase awareness.Assist the development team by identifying target audience needs.Assist in the design and deliverance of launch campaigns, from pre-launch events to post-release targeting and follow-up.
+    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  We are a self-funded startup based in Cambridge, MA developing smart, connected consumer electronics. Founderâ\200\231s include a serial entrepreneur whoâ\200\231s last exit was to #URL_b3c2faf1561263f094e891c6509e62a257da0056bca7a18d42c062d64c8a1ebc# and a corporate leader with a track record of bringing new products to market.We are looking for an Embedded Software / Firmware Engineer. The initial position will be part-time with the expectation that the candidate will accept a full-time role within the organization after a short trial period.ObjectiveDesign and develop firmware.Work with embedded hardware and software engineers.
+    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Would you like to work for a trusted organization that values its employees?Â  A USAllianceÂ career is a journey that starts with a positive, productive, and engaging workplace where employees are valued and respected.We are looking forÂ Â Branch Service AssociatesÂ toÂ deliver excellent service and maximize Member solutions by identifying referral opportunities for new products and services based on Memberâ\200\231s financial goals while performing efficient and accurate banking transactions.Perform member transactions including deposits, withdrawals, money orders, etc.Cross sell USAlliance products and services.
+    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                requirements
+    ## 1                                                                                                                                                                                                                                                                                                Mastery of the English language, both written and oral.Experience with managing and growing online audiences through Facebook / Twitter / YouTube / Pinterest, etc.An active gamer, of any kind, from board games to consoles.Nice to HaveAt least one year of experience in digital marketing.Successfully promoted at least one game in the mobile market, desktop games a plus.Knowledge of the games market, the app market and the existing revenue models.Knowledge of ASO (App Store Optimisation).
+    ## 2 - 2+ years of relevant work experience in embedded systems design and development.- Working knowledge in electronic design, computer architecture, and semiconductor technology.- Understanding of PCB design and fabrication.- Knowledge in both 32 and 64 bit architecture for multi-core processors.- Experience with Broadcom, MIPS, and ARM processors.- Experience in ASICs/FPGAs.- Significant experience troubleshooting.- Self-starter, ability to work and thrive with a small team.- Be located in the greater Boston area.- Be able to work in the United States.- Have a valid passport with the ability to travel internationally.- Bachelorâ\200\231s degree.- Previous experience bringing a product to market is a plus.- Previous experience working with outsourced manufacturing is a plus.
+    ## 3                                                                                                                                                                                                                                                        Minimum of 1 year teller/cashier/cash handling experienceExcellent member service and communication skillsAbility to cross-sell products and services is keyRetail/Sales experience preferredMust have own transportation to travel to other area branches as neededWeekly schedule includes 9am â\200“ 2pm on SaturdaysAll positions must adhere to standard BSA/AML policies, procedures and processes. Â Employees must demonstrate awareness of business functions and how business decisions affect financial and/or non-financial work results.
+    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             benefits
+    ## 1 The chance to be part of a fun and friendly team with a solid history of game creation.The ability to meaningfully contribute in exciting new projects reaching millions of people worldwide.A great working space in Greece's second largest city. Lots of sun, sea, and great food!A competitive salary.Stock options &amp; performance-based bonus.Opportunities for advancement and learning.An extensive office library with technical books to borrow. We can also buy new books, which you suggest, that will assist your professional development.Perks that will add to your Steam/GoG games library! â\230º
+    ## 2                                                                                                                                              What's In It for You- Get into a startup early with an experienced serial entrepreneur with a previous successful exit to a Fortune 100 tech company.- Become a core member of the team with the potential to assume a leadership role.- The development of innovative new products.- Work in the heart of the Kendall/MIT startup community.- Compensation package includes company stock- If youâ\200\231re looking for high risk, high reward, this is your opportunity.
+    ## 3                                                                                                                                                     Our people are our most valuable asset. We recognize their value â\200“ the hard work and dedication they give â\200“ and reward it through a highly competitive salary structure and benefits program which includes:Medical, dental and vision insurance401kÂ Â Retirement Savings PlanÂ with a match up to 6% by the Credit UnionFlexibleÂ SpendingÂ Â AccountsLife insurance paid by the Credit UnionGenerous paid time offGym membership reimbursement program.
     ##   telecommuting has_company_logo has_questions employment_type
     ## 1             0                1             1       Full-time
     ## 2             0                1             1       Full-time
-    ## 3             0                1             0                
-    ##   required_experience required_education                            industry
-    ## 1           Associate  Bachelor's Degree Information Technology and Services
-    ## 2         Entry level        Unspecified                   Computer Software
-    ## 3                                                                           
+    ## 3             0                1             1       Full-time
+    ##   required_experience        required_education             industry
+    ## 1          Internship                                 Computer Games
+    ## 2      Not Applicable         Bachelor's Degree Consumer Electronics
+    ## 3           Associate High School or equivalent              Banking
     ##          function. fraudulent
-    ## 1      Engineering          0
-    ## 2 Customer Service          0
-    ## 3                           0
+    ## 1        Marketing          0
+    ## 2      Engineering          0
+    ## 3 Customer Service          0
 
 ``` r
 summary(df_fake_job)
@@ -311,18 +323,18 @@ gg_miss_var(df_fake_job, show_pct = TRUE) + labs(y = "% Missing")
 viz_df <- select(df_fake_job, -c(max_salary, min_salary, state, city))
 viz_df[viz_df == ""] <- NA
 viz_df$full_text <- 
-  paste(viz_df$title, 
-        viz_df$country, 
-        viz_df$department, 
-        viz_df$company_profile, 
-        viz_df$description, 
-        viz_df$requirements, 
-        viz_df$benefits, 
-        viz_df$employment_type, 
-        viz_df$required_experience, 
-        viz_df$required_education, 
-        viz_df$industry, 
-        viz_df$function.)
+  paste(na.omit(viz_df$title), 
+        na.omit(viz_df$country), 
+        na.omit(viz_df$department), 
+        na.omit(viz_df$company_profile), 
+        na.omit(viz_df$description), 
+        na.omit(viz_df$requirements), 
+        na.omit(viz_df$benefits), 
+        na.omit(viz_df$employment_type), 
+        na.omit(viz_df$required_experience), 
+        na.omit(viz_df$required_education), 
+        na.omit(viz_df$industry), 
+        na.omit(viz_df$function.))
 # sample(viz_df, 3)
 # write.csv(viz_df, "C:/Users/munmu/Documents/GitHub/fake_job_posting\\viz_df.csv", row.names = FALSE)
 ```
@@ -355,13 +367,13 @@ sample_n(model_df, 3)
 ```
 
     ##   job_id telecommuting has_company_logo has_questions fraudulent
-    ## 1  17417             0                1             1          0
-    ## 2  12755             0                0             0          0
-    ## 3   4597             0                1             1          0
-    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   full_text
-    ## 1 Senior Web Developer (Back End/Infrastructure) GR Web Development competitive salary and option pool schemepaid vacation according to greek law, plus public holidaysaccess to free books and resources for professional and personal developmentopportunities to attend conferences, internal and external trainings, workshops, etc.vibrant company culture, weekly team events and more! competitive salary and option pool schemepaid vacation according to greek law, plus public holidaysaccess to free books and resources for professional and personal developmentopportunities to attend conferences, internal and external trainings, workshops, etc.vibrant company culture, weekly team events and more! competitive salary and option pool schemepaid vacation according to greek law, plus public holidaysaccess to free books and resources for professional and personal developmentopportunities to attend conferences, internal and external trainings, workshops, etc.vibrant company culture, weekly team events and more! competitive salary and option pool schemepaid vacation according to greek law, plus public holidaysaccess to free books and resources for professional and personal developmentopportunities to attend conferences, internal and external trainings, workshops, etc.vibrant company culture, weekly team events and more! Full-time Not Applicable Unspecified Information Technology and Services Information Technology
-    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Mechanical Engineer US NA NA NA NA NA Full-time NA NA Mechanical or Industrial Engineering NA
-    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       English Teacher Abroad  US NA see job description see job description see job description see job description Contract NA Bachelor's Degree Education Management NA
+    ## 1  15730             0                0             0          0
+    ## 2   5193             0                1             1          0
+    ## 3   5692             0                0             0          1
+    ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       full_text
+    ## 1 Manufacturing Engineering Manager US Sales/Rental benefits and compensation:negotiablehealth, dental, life &amp; vision insuranceflexible spending accountcompany funded health savingslong and short term disabilitypto (vacation and sick time)statutory holidays401k retirement planning benefits and compensation:negotiablehealth, dental, life &amp; vision insuranceflexible spending accountcompany funded health savingslong and short term disabilitypto (vacation and sick time)statutory holidays401k retirement planning benefits and compensation:negotiablehealth, dental, life &amp; vision insuranceflexible spending accountcompany funded health savingslong and short term disabilitypto (vacation and sick time)statutory holidays401k retirement planning benefits and compensation:negotiablehealth, dental, life &amp; vision insuranceflexible spending accountcompany funded health savingslong and short term disabilitypto (vacation and sick time)statutory holidays401k retirement planning Contract Not Applicable Bachelor's Degree Education Management Health Care Provider
+    ## 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   HGV Class 1 - Trunk Driver PE SA see job description see job description see job description see job description Full-time Entry level Bachelor's Degree Hospital & Health Care Engineering
+    ## 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         Network Marketing US Marketing future prospects. future prospects. future prospects. future prospects. Full-time Mid-Senior level High School or equivalent Gambling & Casinos Information Technology
 
 ``` r
 # write.csv(model_df, "C:/Users/munmu/Documents/GitHub/fake_job_posting\\model_df.csv", row.names = FALSE)
@@ -402,7 +414,7 @@ vis_dat(model_df)
 
 # Exploratory Data Analysis (EDA)
 
-## Visualize Fraud and Real
+## Visualize fraud and real
 
 ``` r
 viz_df$fraudulent[viz_df$fraudulent == 1] <- "Yes"
@@ -412,12 +424,13 @@ barplot(count,
         main="Real and Fraudulent", 
         xlab="fraudulent", 
         ylab="count", 
-        col="#69b3a2")
+        col="#69b3a2"
+)
 ```
 
 ![](project_fake_job_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
-## Visualize Country-wise Job Posting
+## Visualize country-wise job postings
 
 ``` r
 temp <- na.omit(subset(viz_df, select = c(country, job_id))) %>% 
@@ -427,9 +440,9 @@ temp <- na.omit(subset(viz_df, select = c(country, job_id))) %>%
   slice(1:10)
 
 barplot(height=temp$n, 
-        main="Top 10 Country-wise Job Posting", 
+        main="Top 10 Country-wise Job Postings", 
         ylab="count", 
-        col=brewer.pal(10, "Set2"), 
+        col=brewer.pal(10, "Set3"), 
         names.arg=c("United States",
                     "United Kingdom",
                     "Greece",
@@ -440,13 +453,10 @@ barplot(height=temp$n,
                     "Australia",
                     "Philippines",
                     "Netherlands"), 
-        cex.names=0.7, 
+        cex.names=0.6, 
         las=2
 )
 ```
-
-    ## Warning in brewer.pal(10, "Set2"): n too large, allowed maximum for palette Set2 is 8
-    ## Returning the palette you asked for with that many colors
 
 ![](project_fake_job_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
@@ -460,7 +470,7 @@ temp <- na.omit(subset(viz_df, select = c(required_experience, job_id))) %>%
 
 barplot(height=temp$n, 
         names=temp$required_experience, 
-        main="No. of jobs with different experience levels", 
+        main="No. of Job Postings with different required experiences", 
         ylab="count", 
         col=brewer.pal(7, "Set2"), 
         cex.names=0.6, 
@@ -469,6 +479,108 @@ barplot(height=temp$n,
 ```
 
 ![](project_fake_job_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+
+## Visualize job postings with company logo
+
+``` r
+viz_df$has_company_logo[viz_df$has_company_logo == 1] <- "Yes"
+viz_df$has_company_logo[viz_df$has_company_logo == 0] <- "No"
+
+df1 <- na.omit(subset(viz_df, select = c(employment_type, has_company_logo))) %>% 
+  group_by(employment_type, has_company_logo) %>% 
+  summarize(yes = n(), .groups = 'drop') %>% 
+  filter(has_company_logo=="Yes")
+df1 <- subset(df1, select = c(employment_type, yes))
+df2 <- na.omit(subset(viz_df, select = c(employment_type, has_company_logo))) %>% 
+  group_by(employment_type, has_company_logo) %>% 
+  summarize(no = n(), .groups = 'drop') %>% 
+  filter(has_company_logo=="No")
+df2 <- subset(df2, select = c(no))
+df_new <- cbind(df1, df2)
+
+fig <- df_new %>% plot_ly()
+fig <- fig %>% add_trace(x = ~employment_type, y = ~no, type = 'bar', 
+             text = ~no, textposition = 'auto', name = 'No', 
+             marker = list(color = 'rgb(158,202,225)', 
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% add_trace(x = ~employment_type, y = ~yes, type = 'bar', 
+            text = ~yes, textposition = 'auto', name = 'Yes', 
+            marker = list(color = 'rgb(58,200,225)', 
+                          line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% layout(title = "Job Postings with Company Logo based on Employment Type",
+         barmode = 'group',
+         xaxis = list(title = "employment_type"),
+         yaxis = list(title = "count"))
+fig
+```
+
+![](project_fake_job_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+
+## Visualize job postings with questions
+
+``` r
+viz_df$has_questions[viz_df$has_questions == 1] <- "Yes"
+viz_df$has_questions[viz_df$has_questions == 0] <- "No"
+
+df1 <- na.omit(subset(viz_df, select = c(employment_type, has_questions))) %>% 
+  group_by(employment_type, has_questions) %>% 
+  summarize(yes = n(), .groups = 'drop') %>% 
+  filter(has_questions=="Yes")
+df1 <- subset(df1, select = c(employment_type, yes))
+df2 <- na.omit(subset(viz_df, select = c(employment_type, has_questions))) %>% 
+  group_by(employment_type, has_questions) %>% 
+  summarize(no = n(), .groups = 'drop') %>% 
+  filter(has_questions=="No")
+df2 <- subset(df2, select = c(no))
+df_new <- cbind(df1, df2)
+
+fig <- df_new %>% plot_ly()
+fig <- fig %>% add_trace(x = ~employment_type, y = ~no, type = 'bar', 
+             text = ~no, textposition = 'auto', name = 'No', 
+             marker = list(color = 'rgb(158,202,225)', 
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% add_trace(x = ~employment_type, y = ~yes, type = 'bar', 
+            text = ~yes, textposition = 'auto', name = 'Yes', 
+            marker = list(color = 'rgb(58,200,225)', 
+                          line = list(color = 'rgb(8,48,107)', width = 1.5)))
+fig <- fig %>% layout(title = "Job Postings with Questions based on Employment Type",
+         barmode = 'group',
+         xaxis = list(title = "employment_type"),
+         yaxis = list(title = "count"))
+fig
+```
+
+![](project_fake_job_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+
+## Visualize the job function with fraudulent job postings
+
+``` r
+temp <- na.omit(subset(viz_df, select = c(function., fraudulent))) %>% 
+  group_by(function., fraudulent) %>% 
+  summarize(n = n(), .groups = 'drop') %>% 
+  group_by(function.) %>% 
+  summarize(pct_fraud = round(sum(n[fraudulent=="Yes"]/sum(n)), digits=2), 
+            pct_good = 1-pct_fraud, .groups = 'drop') %>% 
+  arrange(desc(pct_fraud)) %>% 
+  slice(1:10)
+
+melted_temp <- melt(temp, id = "function.")
+
+ggplot(melted_temp, aes(x = function., y = value, fill = variable)) + 
+  geom_bar(position = "fill", 
+           stat = "identity", 
+           color = "black", 
+           width = 0.8) + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.6)) + 
+  scale_y_continuous(labels = scales::percent) + 
+  geom_text(aes(label = paste0(value*100,"%")), 
+            position = position_stack(vjust = 0.6), size = 2) + 
+  ggtitle("Job Function with Fraudulent Job Postings (in %)") + 
+  xlab("function") + 
+  ylab("percentage")
+```
+
+![](project_fake_job_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
 
 # Modeling
 
