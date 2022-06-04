@@ -111,19 +111,14 @@ colSums(is.na(df_fake_job))
 ### there are two missing values in 'benefits' column
 ```
 
-## Populate missing rates for each feature
-
-```{r}
-colSums(is.na(df_fake_job)/length(df_fake_job)*100)
-```
-
 ## List rows with missing values
 
 ```{r}
 missingdf <- df_fake_job[!complete.cases(df_fake_job), ]
+sample_n(missingdf, 3)
 ```
 
-## Visualize missing values
+## Visualize missing rates for each feature
 
 ```{r}
 gg_miss_var(df_fake_job, show_pct = TRUE) + labs(y = "% Missing")
@@ -155,6 +150,12 @@ viz_df[viz_df == ""] <- NA
 
 ```{r}
 plot_missing(viz_df)
+```
+
+## Heatplot of missingness across the df
+
+```{r}
+vis_miss(viz_df)
 ```
 
 ## Drop columns
@@ -245,7 +246,7 @@ temp <- na.omit(subset(viz_df, select = c(required_experience, job_id))) %>%
 
 barplot(height=temp$n, 
         names=temp$required_experience, 
-        main="No. of Job Postings with different required experiences", 
+        main="Job Postings with Required Experiences", 
         ylab="count", 
         col=brewer.pal(7, "Set2"), 
         cex.names=0.6, 
