@@ -17,8 +17,8 @@ output: github_document
 
 # Initial Questions
 
--   What are the significant features of classifying fake job posting
--   Which classification model is the best to classify fake job posting
+-   What are the significant features of classifying fake job postings
+-   Which classification model is the best to classify fake job postings
 
 # Objectives
 
@@ -84,15 +84,6 @@ df_fake_job[c("min_salary", "max_salary")][df_fake_job[c("min_salary", "max_sala
 df_fake_job <- select(df_fake_job, -c(location, salary_range))
 ```
 
-## Convert to lowercase string
-
-```{r}
-cols <- c("company_profile", "description", "requirements", "benefits")
-for (x in df_fake_job[cols]) {
-  df_fake_job[cols] <- tolower(x)
-}
-```
-
 ## View the structure of data
 
 ```{r}
@@ -142,7 +133,6 @@ gg_miss_var(df_fake_job, show_pct = TRUE) + labs(y = "% Missing")
 
 ```{r}
 viz_df <- select(df_fake_job, -c(max_salary, min_salary, state, city))
-viz_df[viz_df == ""] <- NA
 viz_df$full_text <- 
   paste(na.omit(viz_df$title), 
         na.omit(viz_df$country), 
@@ -156,6 +146,7 @@ viz_df$full_text <-
         na.omit(viz_df$required_education), 
         na.omit(viz_df$industry), 
         na.omit(viz_df$function.))
+viz_df[viz_df == ""] <- NA
 # sample(viz_df, 3)
 # write.csv(viz_df, "C:/Users/munmu/Documents/GitHub/fake_job_posting\\viz_df.csv", row.names = FALSE)
 ```
